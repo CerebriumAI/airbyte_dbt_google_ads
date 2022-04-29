@@ -6,14 +6,60 @@ sources:
     schema: "{{ var('google_ads_schema', 'google_ads') }}"
     database: "{% if target.type != 'spark'%}{{ var('google_ads_database', target.database) }}{% endif %}"
     tables:
-      - name: users
+      - name: campaigns
 
 models:
-  - name: google_ads__users
-    description: "A table storing all user info."
+  - name: google_ads__campaign_history
+    description: "A table storing historical campaign statistics."
     columns:
-      - name: id
-        description: "The unique identifier for the issue being resolved"
+      - name: campaign_id
+        description: "The unique identifier for the campaign"
         tests:
           - unique
           - not_null
+      - name: campaign_name
+        description: "The name of the campaign"
+        tests:
+          - not_null
+      - name: status
+        description: "The status of the campaign"
+        tests:
+          - not null  
+      - name: start_date
+        description: "The date the campaign started"
+        tests: 
+          - not null
+      - name: end_date
+        description: "The date the campaign ended"
+        tests:
+          - not null
+      - name: content_network_enabled
+        description: "A flag indicating whether the content network is enabled"
+        tests:
+          - not null
+      - name: google_search_enabled
+        description: "A flag indicating whether Google search is enabled"
+        tests:
+        - not null
+      - name: search_network_enabled
+        description: "A flag indicating whether search network is enabled"
+        tests:
+        - not null
+      - name: partner_search_network_enabled
+        description: "A flag indicating whether partner search network is enabled"
+        tests:
+        - not null
+      - name: clicks
+        description: "The number of clicks on ads part of this campaign"
+        tests:
+        - not null
+      - name: impressions
+        description: "The number of impressions on ads part of this campaign"
+        tests:
+        - not null
+      - name: cost
+        description: "The total cost incurred by this campaign"
+        tests:
+        - not null
+      
+      

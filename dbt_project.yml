@@ -23,4 +23,4 @@ models:
 
 vars:
   google_ads:
-    users: "{{ source('google_ads','users') }}"
+    campaigns: "{{ source('google_ads','campaigns')}}"
