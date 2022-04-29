@@ -1,0 +1,19 @@
+
+version: 2
+
+sources:
+  - name: google_ads
+    schema: "{{ var('google_ads_schema', 'google_ads') }}"
+    database: "{% if target.type != 'spark'%}{{ var('google_ads_database', target.database) }}{% endif %}"
+    tables:
+      - name: users
+
+models:
+  - name: google_ads__users
+    description: "A table storing all user info."
+    columns:
+      - name: id
+        description: "The unique identifier for the issue being resolved"
+        tests:
+          - unique
+          - not_null
