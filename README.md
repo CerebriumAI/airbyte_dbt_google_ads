@@ -1,7 +1,7 @@
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 # Google Ads Airbyte
 
-This package models Google Ads data from [Airbyte's connector](https://airbyte.com/connectors/google_ads).
+This package models Google Ads data from [Airbyte's connector](https://airbyte.com/connectors/google-ads).
 
 Let us know which connectors you would like to see next [here](https://19au6qz3a6s.typeform.com/to/c284SPEN)
 
