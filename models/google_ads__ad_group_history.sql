@@ -50,12 +50,11 @@ ad_group_history as (
         campaign_id,
         status,
         {%- for metric in sum_metrics+avg_metrics %}
-            -- {%- if metric != "cost_micros" %}
-            -- {{ metric }}
-            -- {% else %}
-            -- round(cost_micros::numeric / 1000000, 2) as cost
-            -- {% endif %}
+            {%- if metric != "cost_micros" %}
             {{ metric }}
+            {% else %}
+            round(cost_micros::numeric / 1000000, 2) as cost
+            {% endif %}
             {%- if not loop.last %},{% endif -%}
         {%- endfor %}
     from
