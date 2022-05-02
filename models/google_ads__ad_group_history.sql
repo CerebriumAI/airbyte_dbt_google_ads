@@ -5,8 +5,8 @@
     "interactions", 
     "conversions",
     "view_through_conversions",
-    "cost_micros",
-    "conversions_value"
+    "conversions_value",
+    "cost_micros"
 ] %}
 {% set avg_metrics = [
     "bounce_rate",
@@ -50,10 +50,10 @@ ad_group_history as (
         campaign_id,
         status,
         {%- for metric in sum_metrics+avg_metrics %}
-            {%- if metric != "cost_micros" %}
+            {%- if metric[-7:] != "_micros"%}
             {{ metric }}
             {% else %}
-            round(cost_micros::numeric / 1000000, 2) as cost
+            round({{ metric }}::numeric / 1000000, 2) as {{ metric[:-7]}}
             {% endif %}
             {%- if not loop.last %},{% endif -%}
         {%- endfor %}
