@@ -2,11 +2,13 @@
 version: 2
 
 sources:
-  - name: google_ads
+  - name: airbyte_google_ads
     schema: "{{ var('google_ads_schema', 'google_ads') }}"
     database: "{% if target.type != 'spark'%}{{ var('google_ads_database', target.database) }}{% endif %}"
     tables:
       - name: campaigns
+      - name: ad_groups
+      - name: ad_group_ad_report
 
 models:
   - name: google_ads__campaign_history
