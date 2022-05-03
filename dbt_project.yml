@@ -1,4 +1,4 @@
-name: 'google_ads'
+name: 'airbyte_google_ads'
 version: '0.1.0'
 require-dbt-version: ['>=1.0.0']
 config-version: 2
@@ -16,11 +16,14 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  google_ads:
+  airbyte_google_ads:
     materialized: table
     intermediate:
       materialized: ephemeral
 
 vars:
-  google_ads:
-    users: "{{ source('google_ads','users') }}"
+  airbyte_google_ads:
+    campaigns: "{{ source('airbyte_google_ads','campaigns')}}"
+    ad_groups: "{{ source('airbyte_google_ads','ad_groups')}}"
+    ad_group_ad_report: "{{ source('airbyte_google_ads','ad_group_ad_report')}}"
+    
