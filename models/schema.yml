@@ -35,15 +35,15 @@ models:
         description: "The date the campaign ended"
         tests:
           - not_null
-      - name: content_network_enabled
+      - name: has_content_network
         description: "A flag indicating whether the content network is enabled"
         tests:
           - not_null
-      - name: google_search_enabled
+      - name: has_google_search
         description: "A flag indicating whether Google search is enabled"
         tests:
         - not_null
-      - name: search_network_enabled
+      - name: has_search_network
         description: "A flag indicating whether search network is enabled"
         tests:
         - not_null
@@ -64,7 +64,7 @@ models:
         tests:
         - not_null
       
-  - name: google_ads__ad_set_history
+  - name: google_ads__ad_group_history
     description: "A table storing historical ad set statistics."
     columns:
       - name: ad_set_id
@@ -244,7 +244,7 @@ metrics:
   - name: total_campaign_cost
     label: Total Cost of Campaign
     model: ref('google_ads__campaign_history')
-    description: "The cost of the  campaign"
+    description: "The cost of the campaign"
 
     type: sum
     sql: cost
@@ -320,21 +320,6 @@ metrics:
       - status
       - channel_type
       - campaign_name
-
-  - name: total_keyword_impressions
-    label: Total Keyword Impressions
-    model: ref('google_ads__keywords')
-    description: "The total number of impressions for a given keyword"
-
-    type: sum
-    sql: impressions
-
-    timestamp: date
-    time_grains: [day, week, month]
-
-    dimensions:
-      - keyword
-      - match_type
 
   - name: total_keyword_impressions
     label: Total Keyword Impressions

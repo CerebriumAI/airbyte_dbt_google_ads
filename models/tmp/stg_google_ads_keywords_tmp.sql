@@ -6,4 +6,4 @@ select
     "metrics.cost_micros" as cost,
     "metrics.impressions" as impressions,
     "metrics.ctr" as ctr
-from {{ var('keywords') }}
+from {{ var('keyword_report') }}
