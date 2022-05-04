@@ -18,12 +18,13 @@ clean-targets:
 models:
   airbyte_google_ads:
     materialized: table
-    intermediate:
-      materialized: ephemeral
+    tmp:
+      materialized: view
 
 vars:
   airbyte_google_ads:
-    campaigns: "{{ source('airbyte_google_ads','campaigns')}}"
-    ad_groups: "{{ source('airbyte_google_ads','ad_groups')}}"
-    ad_group_ad_report: "{{ source('airbyte_google_ads','ad_group_ad_report')}}"
-    
+    campaigns: "{{ source('airbyte_google_ads','campaigns') }}"
+    ad_groups: "{{ source('airbyte_google_ads','ad_groups') }}"
+    ad_group_ad_report: "{{ source('airbyte_google_ads','ad_group_ad_report') }}"
+    click_view: "{{ source('airbyte_google_ads','click_view') }}"
+    keyword_report: "{{ source('airbyte_google_ads','keyword_report') }}"
