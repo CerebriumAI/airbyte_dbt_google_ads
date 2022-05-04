@@ -47,7 +47,7 @@ models:
         description: "A flag indicating whether search network is enabled"
         tests:
         - not_null
-      - name: partner_search_network
+      - name: has_partner_search_network
         description: "A flag indicating whether partner search network is enabled"
         tests:
         - not_null
@@ -67,7 +67,7 @@ models:
   - name: google_ads__ad_group_history
     description: "A table storing historical ad set statistics."
     columns:
-      - name: ad_set_id
+      - name: ad_group_id
         description: "The unique identifier for the ad set"
         tests:
           - not_null
@@ -77,6 +77,10 @@ models:
           - not_null
       - name: ad_group_name
         description: "The name of the ad group"
+        tests:
+          - not_null
+      - name: campaign_name
+        description: "The name of the ad campaign"
         tests:
           - not_null
       - name: status
@@ -126,9 +130,6 @@ models:
         description: "The unique identifier for the ad group"
         tests:
           - not_null
-          - relationships:
-              to: ref('google_ads__ad_group_history')
-              field: ad_group_id
       - name: campaign_id
         description: "The unique identifier for the campaign"
         tests:
@@ -149,7 +150,7 @@ models:
         tests:
           - not_null
           - accepted_values: 
-              values: ["SEARCH", "SEARCH PARTNERS", "MIXED", "CONTENT"]
+              values: ["SEARCH", "SEARCH_PARTNERS", "MIXED", "CONTENT"]
       - name: keyword
         description: "The keyword that was used to generate the click"
         tests:
@@ -160,7 +161,6 @@ models:
       - name: ad_group_id
         description: "The unique identifier for the ad group"
         tests:
-          - unique
           - not_null
           - relationships:
               to: ref('google_ads__ad_group_history')
