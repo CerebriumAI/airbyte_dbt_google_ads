@@ -10,9 +10,9 @@ ad_reports as (
     select
         campaign_id,
         coalesce(sum(conversions)) as conversions,
-         coalesce(sum(view_through_conversions)) as view_through_conversions,
-         coalesce(sum(conversions_value)) as conversions_value,
-         coalesce(sum(interactions)) as interactions
+        coalesce(sum(view_through_conversions)) as view_through_conversions,
+        coalesce(sum(conversions_value)) as conversions_value,
+        coalesce(sum(interactions)) as interactions
     from
         {{ ref('stg_google_ads_ad_group_report_tmp') }}
     group by 1
