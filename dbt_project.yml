@@ -22,8 +22,10 @@ models:
       materialized: ephemeral
 
 vars:
+  google_ads_schema: 'google_ads_lucafaloni'
   airbyte_google_ads:
-    campaigns: "{{ source('airbyte_google_ads','campaigns')}}"
-    ad_groups: "{{ source('airbyte_google_ads','ad_groups')}}"
-    ad_group_ad_report: "{{ source('airbyte_google_ads','ad_group_ad_report')}}"
-    
+    campaigns: "{{ source('airbyte_google_ads','campaigns') }}"
+    ad_groups: "{{ source('airbyte_google_ads','ad_groups') }}"
+    ad_group_ad_report: "{{ source('airbyte_google_ads','ad_group_ad_report') }}"
+    click_view: "{{ source('airbyte_google_ads','click_view') }}"
+    keywords: "{{ source('airbyte_google_ads','keyword_report') }}"
