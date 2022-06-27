@@ -3,7 +3,7 @@ select
     "segments.date" as date,
     "ad_group_criterion.keyword.text" as keyword,
     "ad_group_criterion.keyword.match_type" as match_type,
-    "metrics.cost_micros" as cost,
+    round("metrics.cost_micros"::numeric / 1000000, 2) as cost
     "metrics.impressions" as impressions,
     "metrics.ctr" as ctr
 from {{ var('keyword_report') }}

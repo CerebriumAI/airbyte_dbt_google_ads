@@ -24,8 +24,8 @@ Include in your `packages.yml`
 
 ```yaml
 packages:
-  - package: cerebriumAI/dbt-google_ads
-    version: ["0.1.0"]
+  - package: cerebriumai/airbyte_google_ads
+    version: 0.1.0
 ```
 
 ## Configuration
